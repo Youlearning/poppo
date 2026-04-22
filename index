@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Matar Cissé - CV Serveur (1 page)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #e2e8e4;
+            font-family: 'Inter', sans-serif;
+            color: #1e2a32;
+            line-height: 1.4;
+            padding: 20px 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Container format A4 strict - tient sur 1 page */
+        .cv-container {
+            max-width: 1100px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+        }
+
+        /* Disposition 2 colonnes */
+        .cv-grid {
+            display: grid;
+            grid-template-columns: 33% 67%;
+        }
+
+        /* ========== SIDE BAR (colonne gauche) ========== */
+        .sidebar {
+            background: #1f3b3c;
+            color: #e9f1ef;
+            padding: 24px 18px;
+            height: 100%;
+        }
+
+        /* Photo de profil */
+        .photo-wrapper {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .profile-img {
+            width: 130px;
+            height: 130px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid #d4c9a6;
+            background: #fff;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+        }
+        .no-photo {
+            width: 130px;
+            height: 130px;
+            background: #d4c9a6;
+            border-radius: 50%;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 42px;
+            color: #1f3b3c;
+            border: 3px solid #fff;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            margin: 20px 0 10px 0;
+            padding-bottom: 5px;
+            border-bottom: 2px solid rgba(212, 201, 166, 0.5);
+            display: inline-block;
+            color: #f5e7d3;
+        }
+
+        .contact-info p {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.75rem;
+            flex-wrap: wrap;
+        }
+        .contact-info i {
+            width: 22px;
+            font-size: 0.85rem;
+            color: #d4c9a6;
+        }
+
+        .lang-item {
+            margin-bottom: 10px;
+        }
+        .lang-name {
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+        .lang-level {
+            font-size: 0.7rem;
+            opacity: 0.8;
+        }
+
+        .interest-item {
+            background: rgba(255,255,245,0.12);
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            margin: 0 4px 8px 0;
+        }
+
+        /* ========== MAIN CONTENT ========== */
+        .main-content {
+            background: white;
+            padding: 24px 24px 20px 24px;
+        }
+
+        .header-name h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #1f3b3c;
+            letter-spacing: -0.5px;
+            margin-bottom: 4px;
+        }
+        .header-name .poste {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #b68b40;
+            background: #fef6e8;
+            display: inline-block;
+            padding: 4px 14px;
+            border-radius: 30px;
+            margin-top: 4px;
+        }
+        .profile-text {
+            background: #f8fafc;
+            padding: 12px 16px;
+            border-radius: 16px;
+            margin: 14px 0 16px 0;
+            border-left: 4px solid #b68b40;
+            font-size: 0.8rem;
+            color: #2c3e3f;
+            line-height: 1.4;
+        }
+
+        .main-section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1f3b3c;
+            margin: 16px 0 10px 0;
+            padding-bottom: 4px;
+            border-bottom: 2px solid #e6d5b8;
+            display: inline-block;
+        }
+
+        .exp-card {
+            margin-bottom: 14px;
+        }
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 4px;
+        }
+        .exp-title {
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: #b1622c;
+        }
+        .exp-date {
+            font-size: 0.7rem;
+            background: #eef2f0;
+            padding: 2px 8px;
+            border-radius: 30px;
+        }
+        .exp-lieu {
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #5b6e6b;
+        }
+        .exp-desc {
+            padding-left: 6px;
+            list-style-type: none;
+        }
+        .exp-desc li {
+            margin-bottom: 5px;
+            font-size: 0.78rem;
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+        }
+        .exp-desc li i {
+            color: #b68b40;
+            font-size: 0.65rem;
+            width: 14px;
+            margin-top: 3px;
+        }
+
+        .skills-badge {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 6px;
+        }
+        .skill-badge {
+            background: #f0f3f2;
+            color: #1f3b3c;
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 0.72rem;
+            font-weight: 500;
+        }
+
+        .formation-item {
+            margin-bottom: 10px;
+        }
+        .formation-diplome {
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+        .formation-ecole {
+            font-size: 0.75rem;
+            color: #4f6f6b;
+        }
+
+        hr {
+            margin: 10px 0;
+            border: 0;
+            height: 1px;
+            background: #e2e8e6;
+        }
+
+        .dispo-badge {
+            font-size: 0.7rem;
+            background: #eef2f0;
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 30px;
+            margin-top: 8px;
+        }
+
+        @media print {
+            body {
+                padding: 0;
+                background: white;
+                margin: 0;
+            }
+            .cv-container {
+                box-shadow: none;
+                border-radius: 0;
+                max-width: 100%;
+            }
+            .sidebar {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .profile-text, .skill-badge, .exp-date, .dispo-badge {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+
+        @media (max-width: 750px) {
+            .cv-grid {
+                grid-template-columns: 1fr;
+            }
+            body {
+                padding: 12px;
+            }
+            .header-name h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="cv-container">
+    <div class="cv-grid">
+        <!-- COLONNE GAUCHE -->
+        <div class="sidebar">
+            <div class="photo-wrapper">
+                <img class="profile-img" src="hop.png" alt="Matar Cissé" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'no-photo\'><i class=\'fas fa-user-circle\'></i></div>';">
+            </div>
+
+            <div class="contact-info">
+                <h3 class="section-title">CONTACT</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Yeumbeul sud, Dakar 12000</p>
+                <p><i class="fas fa-phone-alt"></i> +221 78 542 27 85</p>
+                <p><i class="fas fa-envelope"></i> matarndiaye31g@gmail.com</p>
+                <p><i class="fas fa-calendar-alt"></i> 22/04/2001 (24 ans)</p>
+                <p><i class="fas fa-globe"></i> Sénégalais</p>
+            </div>
+
+            <div class="langues">
+                <h3 class="section-title">LANGUES</h3>
+                <div class="lang-item">
+                    <span class="lang-name">Français</span>
+                    <span class="lang-level">B1 (intermédiaire)</span>
+                </div>
+                <div class="lang-item">
+                    <span class="lang-name">Anglais</span>
+                    <span class="lang-level">A2 (débutant)</span>
+                </div>
+                <div class="lang-item">
+                    <span class="lang-name">Wolof</span>
+                    <span class="lang-level">Maternel</span>
+                </div>
+            </div>
+
+            <div class="centres-interet">
+                <h3 class="section-title">INTÉRÊTS</h3>
+                <div>
+                    <span class="interest-item">📖 Littérature</span>
+                    <span class="interest-item">🏀 Basket (9 ans)</span>
+                    <span class="interest-item">📸 Photographie</span>
+                    <span class="interest-item">🎨 Arts créatifs</span>
+                    <span class="interest-item">🧼 Hygiène</span>
+                    <span class="interest-item">🤝 Esprit d'équipe</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- COLONNE DROITE -->
+        <div class="main-content">
+            <div class="header-name">
+                <h1>Matar Cissé</h1>
+                <div class="poste">Serveur en restauration</div>
+            </div>
+
+            <div class="profile-text">
+                <i class="fas fa-quote-left" style="color:#b68b40; margin-right: 5px; font-size: 0.7rem;"></i> 
+                Serveur avec 1 an d'expérience, maîtrise la mise en place, le service client et l'hygiène. Amical, polyvalent et réactif, je m'adapte aux besoins de l'équipe et des clients pour offrir une expérience mémorable.
+            </div>
+
+            <!-- EXPÉRIENCE -->
+            <div>
+                <h2 class="main-section-title">Expérience</h2>
+                <div class="exp-card">
+                    <div class="exp-header">
+                        <span class="exp-title">Serveur en restauration</span>
+                        <span class="exp-date">mars 2025 – présent</span>
+                    </div>
+                    <div class="exp-lieu">Chez Al Mahdi · Dakar</div>
+                    <ul class="exp-desc">
+                        <li><i class="fas fa-chevron-right"></i> Mise en place et dressage des tables selon réservations.</li>
+                        <li><i class="fas fa-chevron-right"></i> Nettoyage et entretien de la salle pour un cadre agréable.</li>
+                        <li><i class="fas fa-chevron-right"></i> Débarrassage et nettoyage des tables au départ des clients.</li>
+                        <li><i class="fas fa-chevron-right"></i> Accueil, placement, prise de commandes et service courtois.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- COMPÉTENCES -->
+            <div>
+                <h2 class="main-section-title">Compétences</h2>
+                <div class="skills-badge">
+                    <span class="skill-badge">📋 Organisation</span>
+                    <span class="skill-badge">🍽️ Débarrassage</span>
+                    <span class="skill-badge">📍 Placement clients</span>
+                    <span class="skill-badge">🎨 Présentation créative</span>
+                    <span class="skill-badge">😊 Amabilité</span>
+                    <span class="skill-badge">🧹 Propreté</span>
+                    <span class="skill-badge">🤝 Esprit d'équipe</span>
+                    <span class="skill-badge">⚡ Réactivité</span>
+                </div>
+            </div>
+
+            <!-- FORMATION -->
+            <div>
+                <h2 class="main-section-title">Formation</h2>
+                <div class="formation-item">
+                    <div class="formation-diplome">Baccalauréat, Littérature</div>
+                    <div class="formation-ecole">Lycée de Thiaroye, Dakar | 2019 – 2023</div>
+                </div>
+                <div class="formation-item">
+                    <div class="formation-diplome">BFEM</div>
+                    <div class="formation-ecole">Collège Privé A3G, Dakar | 2017 – 2021</div>
+                </div>
+            </div>
+
+            <hr>
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-top: 6px;">
+                <span class="dispo-badge"><i class="fas fa-clock"></i> Disponible immédiatement</span>
+                <span style="font-size: 0.7rem; color: #7f8c8d;"><i class="fas fa-mobile-alt"></i> Mobilité Dakar</span>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
